@@ -20,7 +20,7 @@ class Visitor(models.Model):
     """
     It will store information about user when logged in using django admin
     """
-    name = models.ForeignKey(AUTH_USER_MODEL, verbose_name=_('User'), null=True)
+    name = models.ForeignKey(AUTH_USER_MODEL, verbose_name=_('User'), null=True, on_delete=models.CASCADE)
     city = models.CharField(_('City'), max_length=255, null=True)
     state = models.CharField(_('State'), max_length=50, null=True)
     country = models.CharField(_('Country'), max_length=50, null=True)
@@ -133,6 +133,7 @@ class DjadminModelSetting(models.Model):
                                        related_name='date_hierarchy',
                                        blank=True,
                                        null=True,
+                                       on_delete=models.CASCADE,
                                        verbose_name=_('Date Hierarchy'),
                                        help_text=_("Set date_hierarchy to the name of a DateField or DateTimeField"
                                                    " in your model, and the change list page will include a date-based"
@@ -192,7 +193,7 @@ class Sortable(models.Model):
     But It will store when admin change any row, Otherwise it will not store default changelist
     row's pk. It also provide reset to sortable from icon in table head tag.
     """
-    model = models.ForeignKey(ContentType, verbose_name=_('Model'))
+    model = models.ForeignKey(ContentType, verbose_name=_('Model'), on_delete=models.CASCADE)
     sort_array = models.TextField(_('Model Sortable Array'))
 
     class Meta:
