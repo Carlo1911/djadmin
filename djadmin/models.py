@@ -169,7 +169,7 @@ class DjadminCard(models.Model):
         (LIST_PAGE, _('LIST PAGE')),
         (FORM_PAGE, _('FORM PAGE')),
     )
-    model = models.ForeignKey(DjadminModelSetting)
+    model = models.ForeignKey(DjadminModelSetting, on_delete=models.CASCADE)
     name = models.CharField(_('Name of Card'), max_length=255)
     html = models.TextField(_('HTML Code'))
     location = models.SmallIntegerField(_('Select Location'),
